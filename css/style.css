@@ -1,0 +1,40 @@
+body { padding-top: 56px; }
+.card-img-top { object-fit: cover; height: 250px; }
+.hero {
+  min-height: calc(100vh - 56px);
+  background: url('https://placehold.co/1200x800') center/cover no-repeat;
+  color: #fff;
+}
+.hero h1, .hero p {
+  text-shadow: 0 2px 4px rgba(0,0,0,0.6);
+}
+/* Header de card con borde lateral */
+.card-header-custom {
+  background-color: #fff;
+  border-left: 0.5rem solid #4CAF50;
+  color: #4CAF50;
+}
+
+/* Icono del header en verde */
+.card-header-custom .bi {
+  font-size: 1.5rem;
+  vertical-align: middle;
+  margin-right: 0.5rem;
+}
+
+/* overlay oscuro */
+.modal-backdrop.show {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Icono de corazón animado */
+.heart-icon i {
+  font-size: 4rem;
+  color: #dc3545;
+  animation: heartbeat 1s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  25%, 75% { transform: scale(1.3); }
+}
