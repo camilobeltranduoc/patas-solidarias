@@ -1,0 +1,73 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
+  <div class="container">
+    <!-- Logo -->
+    <a class="navbar-brand fw-semibold" routerLink="/">Patas&nbsp;Solidarias</a>
+
+    <!-- Botón hamburguesa -->
+    <button class="navbar-toggler" type="button"
+            data-bs-toggle="collapse" data-bs-target="#navMenu"
+            aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Menú -->
+    <div id="navMenu" class="collapse navbar-collapse">
+      <!-- 🔐 Cuando el usuario está logueado -->
+      <ul class="navbar-nav ms-auto" *ngIf="auth.user$ | async as user; else anon">
+
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/mascotas" routerLinkActive="active">Mascotas</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/campanas" routerLinkActive="active">Campañas</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/donar" routerLinkActive="active">Donar</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/mis-donaciones" routerLinkActive="active">Mis&nbsp;donaciones</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/perfil" routerLinkActive="active">Perfil</a>
+        </li>
+
+        <li class="nav-item">
+          <button class="btn btn-outline-light ms-lg-2"
+                  (click)="auth.logout()">
+            Salir
+          </button>
+        </li>
+      </ul>
+
+      <!-- 🌐 Menú para visitantes -->
+      <ng-template #anon>
+        <ul class="navbar-nav ms-auto">
+
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/mascotas" routerLinkActive="active">Mascotas</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/campanas" routerLinkActive="active">Campañas</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/donar" routerLinkActive="active">Donar</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="btn btn-outline-light ms-lg-2" routerLink="/login">Ingresar</a>
+          </li>
+
+          <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
+            <a class="btn btn-light text-primary" routerLink="/registro">Crear cuenta</a>
+          </li>
+        </ul>
+      </ng-template>
+    </div>
+  </div>
+</nav>

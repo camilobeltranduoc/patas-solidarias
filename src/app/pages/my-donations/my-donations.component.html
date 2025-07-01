@@ -1,0 +1,51 @@
+<h2 class="text-center fw-semibold mb-4">
+  <i class="bi bi-heart-fill text-danger me-1"></i>
+  Mis donaciones
+</h2>
+
+<!-- Tarjeta contenedora -->
+<div class="card shadow-sm mx-auto" style="max-width: 650px">
+
+  <!-- Cabecera opcional -->
+  <div class="card-header bg-primary text-white py-2 d-flex justify-content-between">
+    <span class="fw-semibold">Fecha / Hora</span>
+    <span class="fw-semibold">Monto</span>
+  </div>
+
+  <!-- Lista de donaciones -->
+  <ul class="list-group list-group-flush"
+      *ngIf="donations$ | async as dons; else vacio">
+
+    <li class="list-group-item d-flex justify-content-between align-items-center"
+        *ngFor="let d of dons">
+
+      <!-- Fecha bonita -->
+      <span class="text-body-secondary">
+        {{ d.date | date:'medium' }}
+      </span>
+
+      <!-- Columna de acciones -->
+      <span class="d-flex align-items-center gap-3">
+
+        <!-- Monto con badge -->
+        <span class="badge bg-success-subtle text-success fw-semibold px-3">
+          ${{ d.amount | number }}
+        </span>
+
+        <!-- Botón pdf -->
+        <button class="btn btn-sm btn-outline-secondary"
+        (click)="pdf(d)" title="Descargar recibo">
+        <a>📄</a>
+      </button>
+      </span>
+    </li>
+  </ul>
+
+</div>
+
+<!-- Mensaje cuando no hay donaciones -->
+<ng-template #vacio>
+  <p class="text-center text-muted mt-3">
+    Aún no tienes donaciones registradas.
+  </p>
+</ng-template>

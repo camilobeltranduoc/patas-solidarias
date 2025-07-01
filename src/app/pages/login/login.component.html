@@ -1,0 +1,22 @@
+<h2 class="text-center mb-4">Iniciar sesión</h2>
+
+<form #f="ngForm" (ngSubmit)="submit(f)"
+      class="card p-4 mx-auto" style="max-width:420px">
+
+  <div class="mb-3">
+    <input type="email" name="email" ngModel
+           class="form-control" placeholder="Correo"
+           required email>
+  </div>
+
+  <div class="mb-4">
+    <input type="password" name="pass" ngModel
+           class="form-control" placeholder="Contraseña"
+           required minlength="6">
+  </div>
+
+  <button class="btn btn-primary w-100" type="submit" [disabled]="f.invalid || loading">
+    <span *ngIf="!loading">Entrar</span>
+    <span *ngIf="loading" class="spinner-border spinner-border-sm"></span>
+  </button>
+</form>

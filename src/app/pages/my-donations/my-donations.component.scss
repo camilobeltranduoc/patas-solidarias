@@ -1,0 +1,9 @@
+.card {
+  border-radius: .8rem;
+  transition: box-shadow .2s;
+  &:hover { box-shadow: 0 0 0.75rem rgba(0,0,0,.12); }
+}
+
+.badge.bg-success-subtle {
+  background-color: rgba(25,135,84,.15) !important;
+}

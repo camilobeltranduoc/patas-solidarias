@@ -1,0 +1,23 @@
+<h2 class="text-center my-4">Mascotas en adopción</h2>
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+  <div class="col" *ngFor="let pet of pets">
+    <div class="card h-100">
+      <img [src]="pet.foto" [alt]="pet.nombre" class="card-img-top">
+      <div class="card-body">
+        <h5 class="card-title">{{ pet.nombre }}</h5>
+        <p class="card-text">
+          {{ pet.edad }}<br>
+          {{ pet.descripcion }}
+        </p>
+
+        <button
+          class="btn btn-outline-primary"
+          [disabled]="pet.adoptado"
+          (click)="adopt(pet)">
+          {{ pet.adoptado ? 'Adoptado' : 'Adoptar' }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
