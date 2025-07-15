@@ -1,0 +1,13 @@
+services:
+  app:                       # ← un solo contenedor
+    build:                   # usa el Dockerfile
+      context: .
+      dockerfile: Dockerfile
+    volumes:                 # hot‑reload de código
+      - .:/app
+      - /app/node_modules     # evita sobre‑montar nodemodules
+    ports:
+      - "4200:4200"           # UI
+      - "3000:3000"           # API mock
+    environment:
+      - CHOKIDAR_USEPOLLING=true  # hot‑reload fiable en algunos SO

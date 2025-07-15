@@ -1,0 +1,29 @@
+{
+  "campaigns": [
+    {
+      "id": "1",
+      "title": "Esterilizaciones 2025",
+      "goal": 1500000,
+      "raised": 450000
+    },
+    {
+      "id": "2",
+      "title": "Alimento invierno",
+      "goal": 800000,
+      "raised": 210000
+    },
+    {
+      "id": "ba23",
+      "title": "prueba",
+      "goal": 10000,
+      "description": "prueba"
+    },
+    {
+      "id": "5315",
+      "title": "ayuda 1",
+      "goal": 10000,
+      "description": "ayuda1",
+      "raised": 8500
+    }
+  ]
+}

@@ -1,3 +1,13 @@
+/**
+ * ===============================================
+ * Componente: AnimalsComponent
+ * Archivo: src/app/pages/animals/animals.component.ts
+ * Descripción:
+ * Componente standalone que muestra una lista de mascotas disponibles para adopción.
+ * Permite marcar una mascota como adoptada, actualizando su estado local y
+ * mostrando una alerta de agradecimiento.
+ * ===============================================
+ */
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 

@@ -1,3 +1,13 @@
+/**
+ * ===============================================
+ * Servicio: AlertService
+ * Archivo: alert.service.ts
+ * Descripción:
+ * Servicio global responsable de emitir mensajes de alerta a la interfaz.
+ * Utiliza un Subject para transmitir eventos de alerta de tipo `success`, `danger`, `info` o `warning`.
+ * Los componentes pueden suscribirse al observable `msg$` para reaccionar a nuevas alertas.
+ * ===============================================
+ */
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 

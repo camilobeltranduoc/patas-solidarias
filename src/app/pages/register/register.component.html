@@ -1,28 +1,47 @@
-<h2 class="text-center mb-4">Crear cuenta</h2>
+<!-- register.component.html -->
+<h2 class="text-center my-4">Crear cuenta</h2>
 
-<form #f="ngForm" (ngSubmit)="submit(f)"
-      class="card p-4 mx-auto" style="max-width:420px">
+<form #f="ngForm" (ngSubmit)="submit(f)" class="mx-auto" style="max-width:420px">
 
+  <!-- ------------- e-mail ---------------- -->
   <div class="mb-3">
-    <input type="email" name="email" ngModel
-           class="form-control" placeholder="Correo"
-           required email>
+    <label class="form-label">Correo</label>
+    <input name="email" ngModel required email
+           type="email" class="form-control"
+           [class.is-invalid]="f.submitted && email.invalid" #email="ngModel">
+    <div class="invalid-feedback">
+      Ingresa un correo válido
+    </div>
   </div>
 
+  <!-- ------------- contraseña fuerte ------ -->
   <div class="mb-3">
-    <input type="password" name="pass" ngModel
-           class="form-control" placeholder="Contraseña (mín. 6)"
-           required minlength="6">
+    <label class="form-label">Contraseña</label>
+    <input name="pass" ngModel required
+           [pattern]="passPattern"
+           type="password" class="form-control"
+           [class.is-invalid]="f.submitted && pass.invalid" #pass="ngModel">
+
+    <ul class="small text-danger ps-3 mb-0" *ngIf="f.submitted && pass.invalid">
+      <li *ngIf="pass.errors?.['required']">Obligatoria</li>
+      <li *ngIf="pass.errors?.['pattern']">
+        8-20&nbsp;carac. · 1 mayús. · 1 minús. · 1 número · 1&nbsp;especial
+      </li>
+    </ul>
   </div>
 
-  <div class="mb-4">
-    <input type="password" name="pass2" ngModel
-           class="form-control" placeholder="Confirmar contraseña"
-           required>
+  <!-- ------------- repetir contraseña ----- -->
+  <div class="mb-3">
+    <label class="form-label">Repite contraseña</label>
+    <input name="pass2" ngModel required
+           type="password" class="form-control"
+           [class.is-invalid]="f.submitted && pass2.invalid" #pass2="ngModel">
+    <div class="invalid-feedback">
+      Campo obligatorio
+    </div>
   </div>
 
-  <button class="btn btn-success w-100" type="submit" [disabled]="f.invalid || loading">
-    <span *ngIf="!loading">Registrarme</span>
-    <span *ngIf="loading" class="spinner-border spinner-border-sm"></span>
+  <button class="btn btn-primary w-100" type="submit" [disabled]="loading">
+    {{ loading ? 'Creando…' : 'Registrarse' }}
   </button>
 </form>

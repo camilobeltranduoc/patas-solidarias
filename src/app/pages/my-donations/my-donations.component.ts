@@ -1,4 +1,13 @@
-
+/**
+ * ===============================================
+ * Componente: MyDonationsComponent
+ * Archivo: src/app/pages/my-donations/my-donations.component.ts
+ * Descripción:
+ * Componente standalone que muestra al usuario un listado de sus donaciones realizadas.
+ * Carga las donaciones desde Firestore a través del servicio `DonationService`.
+ * Incluye una función placeholder para generar un recibo en PDF por cada donación.
+ * ===============================================
+ */
 import { Component } from '@angular/core';
 import { CommonModule, AsyncPipe } from '@angular/common';
 import { Observable } from 'rxjs';

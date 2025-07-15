@@ -1,5 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
   <div class="container">
+
     <!-- Logo -->
     <a class="navbar-brand fw-semibold" routerLink="/">Patas&nbsp;Solidarias</a>
 
@@ -12,59 +13,60 @@
 
     <!-- Menú -->
     <div id="navMenu" class="collapse navbar-collapse">
-      <!-- 🔐 Cuando el usuario está logueado -->
+      <!-- 🔐 Usuario autenticado -->
       <ul class="navbar-nav ms-auto" *ngIf="auth.user$ | async as user; else anon">
 
         <li class="nav-item">
-          <a class="nav-link" routerLink="/mascotas" routerLinkActive="active">Mascotas</a>
+          <a routerLink="/mascotas" routerLinkActive="active" class="nav-link">Mascotas</a>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" routerLink="/campanas" routerLinkActive="active">Campañas</a>
+          <a routerLink="/campanas" routerLinkActive="active" class="nav-link">
+            Campañas
+          </a>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" routerLink="/donar" routerLinkActive="active">Donar</a>
+          <a routerLink="/donar" routerLinkActive="active" class="nav-link">Donar</a>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" routerLink="/mis-donaciones" routerLinkActive="active">Mis&nbsp;donaciones</a>
+          <a routerLink="/mis-donaciones" routerLinkActive="active" class="nav-link">
+            Mis&nbsp;donaciones
+          </a>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" routerLink="/perfil" routerLinkActive="active">Perfil</a>
+          <a routerLink="/perfil" routerLinkActive="active" class="nav-link">Perfil</a>
         </li>
 
         <li class="nav-item">
-          <button class="btn btn-outline-light ms-lg-2"
-                  (click)="auth.logout()">
-            Salir
-          </button>
+          <button class="btn btn-outline-light ms-lg-2" (click)="auth.logout()">Salir</button>
         </li>
       </ul>
 
-      <!-- 🌐 Menú para visitantes -->
+      <!-- 🌐 Visitante sin iniciar sesión -->
       <ng-template #anon>
         <ul class="navbar-nav ms-auto">
 
           <li class="nav-item">
-            <a class="nav-link" routerLink="/mascotas" routerLinkActive="active">Mascotas</a>
+            <a routerLink="/mascotas" routerLinkActive="active" class="nav-link">Mascotas</a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" routerLink="/campanas" routerLinkActive="active">Campañas</a>
+            <a routerLink="/campanas" routerLinkActive="active" class="nav-link">Campañas</a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" routerLink="/donar" routerLinkActive="active">Donar</a>
+            <a routerLink="/donar" routerLinkActive="active" class="nav-link">Donar</a>
           </li>
 
           <li class="nav-item">
-            <a class="btn btn-outline-light ms-lg-2" routerLink="/login">Ingresar</a>
+            <a routerLink="/login" class="btn btn-outline-light ms-lg-2">Ingresar</a>
           </li>
 
           <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
-            <a class="btn btn-light text-primary" routerLink="/registro">Crear cuenta</a>
+            <a routerLink="/registro" class="btn btn-light text-primary">Crear&nbsp;cuenta</a>
           </li>
         </ul>
       </ng-template>

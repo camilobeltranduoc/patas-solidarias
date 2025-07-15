@@ -1,3 +1,13 @@
+/**
+ * ===============================================
+ * Componente: ProfileComponent
+ * Archivo: src/app/pages/profile/profile.component.ts
+ * Descripción:
+ * Componente standalone que permite al usuario actualizar su nombre visible (displayName).
+ * Utiliza formularios reactivos y Firebase Auth para guardar los cambios.
+ * También permite cerrar sesión y redirige al usuario a la página de inicio.
+ * ===============================================
+ */
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, ReactiveFormsModule, Validators, FormGroup } from '@angular/forms';

@@ -1,59 +1,123 @@
-# PatasSolidarias
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.0.4.
+# 🐾 Patas Solidarias – Front‑End + Mock API
 
-## Development server
+Aplicación SPA Angular que permite gestionar campañas de ayuda para animales y recibir donaciones.  
+Los datos de las campañas se sirven desde un **JSON Server** local, mientras que las donaciones y usuarios se guardan en **Firebase (Auth + Firestore)**.
 
-To start a local development server, run:
+---
 
-```bash
-ng serve
-```
+## ✨ Funcionalidades
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+| Rol | Vista | Acciones |
+|-----|-------|----------|
+| Visitante | Inicio / Campañas / Donar | Registro · Login |
+| Usuario | Donar | Realizar donación<br>Ver **Mis donaciones** |
+| Admin  | Campañas (panel) | Crear / editar / eliminar campaña |
 
-## Code scaffolding
+Otras características:
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+* **Validación fuerte de contraseñas** (mín. 6 car., mayús, minús, número, especial).  
+* Recuperar contraseña por correo.  
+* Navegación protegida por **Role Guard**.  
+* 4 pruebas unitarias (Jasmine + Karma).  
+* Docker Compose: `ui` (Angular + Vite) y `api` (JSON Server).
 
-```bash
-ng generate component component-name
-```
+---
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## 🛠 Tecnologías
 
-```bash
-ng generate --help
-```
+* Angular 20 (stand‑alone components, Vite builder)  
+* Firebase v10 (`@angular/fire`)  
+* JSON Server 0.18  
+* Bootstrap 5 + SCSS  
+* Docker 24 / Compose v2  
+* Jasmine & Karma
 
-## Building
+---
 
-To build the project run:
+## ⚡ Rápido inicio
 
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
+### 1. Clonar e instalar
 
 ```bash
-ng e2e
+git clone https://github.com/<TU‑USUARIO>/patas-solidarias.git
+cd patas-solidarias
+npm install
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+### 2. Variables de entorno Firebase
 
-## Additional Resources
+> **Por seguridad** el archivo no está en el repo.
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+1. Crea `src/environments/environment.ts`:
+
+```ts
+export const environment = {
+  production: false,
+  apiUrl: 'http://localhost:3000',
+  firebase: {
+    apiKey: '…',
+    authDomain: '…',
+    projectId: '…',
+    storageBucket: '…',
+    messagingSenderId: '…',
+    appId: '…'
+  }
+};
+```
+
+2. Repite con `environment.prod.ts` si necesitas config separada de producción.
+
+### 3. Modo desarrollador (Angular + API)
+
+```bash
+npm run dev          # = concurrently "ng serve" "json-server …"
+```
+
+* UI 👉 <http://localhost:4200>  
+* API 👉 <http://localhost:3000/campaigns>
+
+---
+
+## 🧪 Tests
+
+```bash
+npm run test
+```
+
+Ejecución de Jasmine + Karma (watch).
+
+---
+
+## 🐳 Docker
+
+```bash
+docker compose up --build
+# ui  : http://localhost:8080
+# api : http://localhost:3000/campaigns
+```
+
+Archivos relevantes:
+
+* `Dockerfile` – build Angular → Nginx  
+* `docker-compose.yml` – define `ui` + `api`  
+* `.dockerignore`
+
+---
+
+## 📂 Estructura (resumen)
+
+```
+src/
+├ app/ (core, pages, shared)
+├ environments/
+api/campaigns.json
+Dockerfile
+docker-compose.yml
+```
+
+---
+
+## 📜 Licencia
+
+MIT © 2025 Patas Solidarias Team

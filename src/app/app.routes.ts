@@ -1,3 +1,11 @@
+/**
+ * ===============================================
+ * Archivo: app.routes.ts
+ * Descripción: Define las rutas principales de la aplicación Angular.
+ * Cada ruta enlaza una URL con su respectivo componente.
+ * ===============================================
+ */
+
 import { Routes } from '@angular/router';
 
 import { HomeComponent }        from './pages/home/home.component';
@@ -8,6 +16,7 @@ import { MyDonationsComponent } from './pages/my-donations/my-donations.componen
 import { ProfileComponent }     from './pages/profile/profile.component';
 import { LoginComponent }       from './pages/login/login.component';
 import { RegisterComponent }    from './pages/register/register.component';
+import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 
 export const routes: Routes = [
   { path: '',               component: HomeComponent },
@@ -18,5 +27,6 @@ export const routes: Routes = [
   { path: 'perfil',         component: ProfileComponent },
   { path: 'login',          component: LoginComponent },
   { path: 'registro',       component: RegisterComponent },
+  { path: 'recuperar',      component: ForgotPasswordComponent },
   { path: '**', redirectTo: '', pathMatch: 'full' }
 ];

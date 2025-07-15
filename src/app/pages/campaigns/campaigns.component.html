@@ -1,93 +1,80 @@
-<!-- Contenido principal -->
-  <main class="flex-grow-1 pt-5">
-    <div class="container my-4">
-      <h2 class="mb-4">Campañas activas</h2>
-      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+<main class="flex-grow-1 pt-5">
+  <div class="container my-4">
+    <h2 class="mb-4">Campañas activas</h2>
 
-        <!-- Campaña 1 -->
-        <div class="col">
-          <div class="card h-100">
-            <div class="card-body">
-              <h5 class="card-title">Alimento para 50 perros</h5>
-              <p class="card-text">Meta: $1.000.000</p>
-              <div class="progress mb-3">
-                <div class="progress-bar" style="width: 45%;">45%</div>
-              </div>
-              <a href="donate.html" class="btn btn-outline-success">Donar</a>
-            </div>
+    <!-- 🔐 Formulario SOLO para admin -->
+    <div class="card mb-4"
+         *ngIf="(auth.role$ | async) === 'admin'">
+      <div class="card-body">
+        <form #f="ngForm" (ngSubmit)="save(f)" class="row g-2">
+
+          <div class="col-12 col-md">
+            <input name="title" ngModel required
+                   class="form-control" placeholder="Título">
           </div>
-        </div>
 
-        <!-- Campaña 2 -->
-        <div class="col">
-          <div class="card h-100">
-            <div class="card-body">
-              <h5 class="card-title">Cirugías para 10 gatos</h5>
-              <p class="card-text">Meta: $800.000</p>
-              <div class="progress mb-3">
-                <div class="progress-bar bg-info" style="width: 60%;">60%</div>
-              </div>
-              <a href="donate.html" class="btn btn-outline-success">Donar</a>
-            </div>
+          <div class="col-6 col-md-2">
+            <input name="goal" ngModel required min="1" type="number"
+                   class="form-control" placeholder="Meta CLP">
           </div>
-        </div>
 
-        <!-- Campaña 3 -->
-        <div class="col">
-          <div class="card h-100">
-            <div class="card-body">
-              <h5 class="card-title">Esterilización masiva</h5>
-              <p class="card-text">Meta: $1.200.000</p>
-              <div class="progress mb-3">
-                <div class="progress-bar bg-warning" style="width: 30%;">30%</div>
-              </div>
-              <a href="donate.html" class="btn btn-outline-success">Donar</a>
-            </div>
+          <div class="col-12">
+            <textarea name="description" ngModel required rows="2"
+                      class="form-control" placeholder="Descripción"></textarea>
           </div>
-        </div>
 
-        <!-- Campaña 4 -->
-        <div class="col">
-          <div class="card h-100">
-            <div class="card-body">
-              <h5 class="card-title">Refugio temporal</h5>
-              <p class="card-text">Meta: $600.000</p>
-              <div class="progress mb-3">
-                <div class="progress-bar bg-primary" style="width: 75%;">75%</div>
-              </div>
-              <a href="donate.html" class="btn btn-outline-success">Donar</a>
-            </div>
+          <div class="col-12 text-end">
+            <button class="btn btn-primary"
+                    type="submit"
+                    [disabled]="f.invalid || loading">
+              {{ loading ? 'Guardando…' : 'Crear campaña' }}
+            </button>
           </div>
-        </div>
-
-        <!-- Campaña 5 -->
-        <div class="col">
-          <div class="card h-100">
-            <div class="card-body">
-              <h5 class="card-title">Vacunación gratuita</h5>
-              <p class="card-text">Meta: $500.000</p>
-              <div class="progress mb-3">
-                <div class="progress-bar bg-danger" style="width: 55%;">55%</div>
-              </div>
-              <a href="donate.html" class="btn btn-outline-success">Donar</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Campaña 6 -->
-        <div class="col">
-          <div class="card h-100">
-            <div class="card-body">
-              <h5 class="card-title">Juguetes para 100 mascotas</h5>
-              <p class="card-text">Meta: $300.000</p>
-              <div class="progress mb-3">
-                <div class="progress-bar bg-secondary" style="width: 25%;">25%</div>
-              </div>
-              <a href="donate.html" class="btn btn-outline-success">Donar</a>
-            </div>
-          </div>
-        </div>
-
+        </form>
       </div>
     </div>
-  </main>
+
+    <!-- Mensaje vacío -->
+    <p class="text-muted" *ngIf="!(campaigns$ | async)?.length">
+      Aún no hay campañas registradas.
+    </p>
+
+    <!-- Tarjetas dinámicas -->
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4"
+         *ngIf="campaigns$ | async as campaigns">
+      <div class="col" *ngFor="let c of campaigns">
+        <div class="card h-100 shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title mb-1">{{ c.title }}</h5>
+            <p class="card-text small mb-2">
+              Meta: {{ c.goal | currency:'CLP':'symbol':'1.0-0' }}
+            </p>
+
+            <div class="progress mb-3" style="height:.65rem">
+              <div class="progress-bar"
+                   role="progressbar"
+                   [style.width.%]="percent(c)"
+                   [ngClass]="barClass(c)">
+                {{ percent(c) }}%
+              </div>
+            </div>
+
+            <!-- enlace Donar para todos -->
+            <a class="btn btn-outline-success btn-sm me-1"
+               [routerLink]="['/donar']"
+               [queryParams]="{ id: c.id }">
+              Donar
+            </a>
+
+            <!-- 🗑 solo admin -->
+            <button class="btn btn-outline-danger btn-sm"
+                    *ngIf="(auth.role$ | async) === 'admin'"
+                    (click)="delete(c.id!)">
+              🗑
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
