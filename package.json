@@ -2,12 +2,12 @@
   "name": "patas-solidarias",
   "version": "0.0.0",
   "scripts": {
-  "ui":  "ng serve --host 0.0.0.0 --port 4200",
-  "api": "json-server --watch api/campaigns.json --host 0.0.0.0 --port 3000",
-  "dev": "concurrently \"npm:ui\" \"npm:api\"",
-  "build": "ng build",
-  "test":  "ng test",
-  "watch": "ng build --watch --configuration development"
+    "ui": "ng serve --host 0.0.0.0 --port 4200",
+    "api": "json-server --watch api/campaigns.json --host 0.0.0.0 --port 3000",
+    "dev": "concurrently \"npm:ui\" \"npm:api\"",
+    "build": "ng build",
+    "test": "ng test",
+    "watch": "ng build --watch --configuration development"
   },
   "prettier": {
     "overrides": [
@@ -38,6 +38,7 @@
     "@angular/build": "^20.0.4",
     "@angular/cli": "^20.0.4",
     "@angular/compiler-cli": "^20.0.0",
+    "@compodoc/compodoc": "^1.1.26",
     "@types/jasmine": "~5.1.0",
     "concurrently": "^9.2.0",
     "jasmine-core": "~5.7.0",
@@ -47,6 +48,7 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
-    "typescript": "~5.8.2"
+    "typescript": "~5.8.2",
+    "zone.js": "^0.15.1"
   }
 }

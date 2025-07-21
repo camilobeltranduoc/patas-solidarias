@@ -1,0 +1,979 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>patas-solidarias documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">patas-solidarias documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  CampaignsComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/pages/campaigns/campaigns.component.ts</code>
+</p>
+
+
+
+
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-campaigns</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                            <code>CommonModule</code>
+                            <code>FormsModule</code>
+                            <code>RouterLink</code>
+                            <code>RouterLinkActive</code>
+                            <code>RouterLinkWithHref</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./campaigns.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./campaigns.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#auth" >auth</a>
+                            </li>
+                            <li>
+                                <a href="#campaigns$" >campaigns$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#cs" >cs</a>
+                            </li>
+                            <li>
+                                <a href="#loading" >loading</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#barClass" >barClass</a>
+                            </li>
+                            <li>
+                                <a href="#delete" >delete</a>
+                            </li>
+                            <li>
+                                <a href="#percent" >percent</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#reload" >reload</a>
+                            </li>
+                            <li>
+                                <a href="#save" >save</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="barClass"></a>
+                    <span class="name">
+                        <span ><b>barClass</b></span>
+                        <a href="#barClass"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>barClass(c: <a href="../interfaces/Campaign.html" target="_self">Campaign</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="78"
+                                    class="link-to-prism">src/app/pages/campaigns/campaigns.component.ts:78</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>c</td>
+                                            <td>
+                                                            <code><a href="../interfaces/Campaign.html" target="_self" >Campaign</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>&quot;bg-primary&quot; | &quot;bg-info&quot; | &quot;bg-warning&quot; | &quot;bg-danger&quot;</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="delete"></a>
+                    <span class="name">
+                        <span ><b>delete</b></span>
+                        <a href="#delete"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>delete(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="67"
+                                    class="link-to-prism">src/app/pages/campaigns/campaigns.component.ts:67</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>id</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="percent"></a>
+                    <span class="name">
+                        <span ><b>percent</b></span>
+                        <a href="#percent"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>percent(c: <a href="../interfaces/Campaign.html" target="_self">Campaign</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="72"
+                                    class="link-to-prism">src/app/pages/campaigns/campaigns.component.ts:72</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>c</td>
+                                            <td>
+                                                            <code><a href="../interfaces/Campaign.html" target="_self" >Campaign</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="reload"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>reload</b></span>
+                        <a href="#reload"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>reload()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="42"
+                                    class="link-to-prism">src/app/pages/campaigns/campaigns.component.ts:42</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="save"></a>
+                    <span class="name">
+                        <span ><b>save</b></span>
+                        <a href="#save"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>save(f: NgForm)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="47"
+                                    class="link-to-prism">src/app/pages/campaigns/campaigns.component.ts:47</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>f</td>
+                                            <td>
+                                                        <code>NgForm</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="auth"></a>
+                    <span class="name">
+                        <span ><b>auth</b></span>
+                        <a href="#auth"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(AuthService)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/pages/campaigns/campaigns.component.ts:35</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="campaigns$"></a>
+                    <span class="name">
+                        <span ><b>campaigns$</b></span>
+                        <a href="#campaigns$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Campaign.html" target="_self" >Observable&lt;Campaign[]&gt;</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this.cs.getAll()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/app/pages/campaigns/campaigns.component.ts:38</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cs"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>cs</b></span>
+                        <a href="#cs"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(CampaignService)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/app/pages/campaigns/campaigns.component.ts:36</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loading"></a>
+                    <span class="name">
+                        <span ><b>loading</b></span>
+                        <a href="#loading"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/app/pages/campaigns/campaigns.component.ts:39</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, inject } from &#x27;@angular/core&#x27;;
+import { CommonModule} from &#x27;@angular/common&#x27;;
+import { FormsModule, NgForm } from &#x27;@angular/forms&#x27;;
+import {
+  RouterLink, RouterLinkActive, RouterLinkWithHref
+} from &#x27;@angular/router&#x27;;
+import { Observable } from &#x27;rxjs&#x27;;
+
+import { AuthService }         from &#x27;../../core/auth.service&#x27;;
+import { CampaignService,
+         Campaign }            from &#x27;../../core/campaign.service&#x27;;
+
+@Component({
+  selector: &#x27;app-campaigns&#x27;,
+  standalone : true,
+  imports    : [
+    CommonModule, FormsModule,
+    RouterLink, RouterLinkActive, RouterLinkWithHref   // 👈 directivas router
+  ],
+  templateUrl: &#x27;./campaigns.component.html&#x27;,
+  styleUrls  : [&#x27;./campaigns.component.scss&#x27;]
+})
+export class CampaignsComponent {
+
+  auth &#x3D; inject(AuthService);
+  public cs &#x3D; inject(CampaignService);
+
+  campaigns$: Observable&lt;Campaign[]&gt; &#x3D; this.cs.getAll();
+  loading &#x3D; false;
+
+  /* -------- helper reutilizable -------- */
+  private reload() {
+    this.campaigns$ &#x3D; this.cs.getAll();
+  }
+
+  /* ---------- crear campaña (POST) ----- */
+  save(f: NgForm) {
+  if (f.invalid) { return; }
+
+  const { title, goal, description } &#x3D; f.value;
+  const body &#x3D; { title, goal: +goal, description };
+
+  this.loading &#x3D; true;
+  this.cs.create(body).subscribe({
+    next: () &#x3D;&gt; {
+      /* ① limpiar formulario ----------------------- */
+      f.resetForm();
+      /* ② volver a leer la colección --------------- */
+      this.campaigns$ &#x3D; this.cs.getAll();
+    },
+    error: err &#x3D;&gt; alert(err.message),
+    complete: () &#x3D;&gt; this.loading &#x3D; false
+  });
+}
+
+  /* ---------- eliminar campaña --------- */
+  delete(id: number) {
+    this.cs.delete(id).subscribe(() &#x3D;&gt; this.reload());
+  }
+
+  /* porcentaje alcanzado respecto a la meta */
+  percent(c: Campaign): number {
+    const raised &#x3D; (c as any).raised ?? 0;
+    return Math.min(100, Math.round(raised * 100 / c.goal));
+  }
+
+  /* clase Bootstrap según el % */
+  barClass(c: Campaign) {
+    const p &#x3D; this.percent(c);
+    if (p &gt;&#x3D; 75) return &#x27;bg-primary&#x27;;
+    if (p &gt;&#x3D; 50) return &#x27;bg-info&#x27;;
+    if (p &gt;&#x3D; 25) return &#x27;bg-warning&#x27;;
+    return &#x27;bg-danger&#x27;;
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;main class&#x3D;&quot;flex-grow-1 pt-5&quot;&gt;
+  &lt;div class&#x3D;&quot;container my-4&quot;&gt;
+    &lt;h2 class&#x3D;&quot;mb-4&quot;&gt;Campañas activas&lt;/h2&gt;
+
+    &lt;!-- 🔐 Formulario SOLO para admin --&gt;
+    &lt;div class&#x3D;&quot;card mb-4&quot;
+         *ngIf&#x3D;&quot;(auth.role$ | async) &#x3D;&#x3D;&#x3D; &#x27;admin&#x27;&quot;&gt;
+      &lt;div class&#x3D;&quot;card-body&quot;&gt;
+        &lt;form #f&#x3D;&quot;ngForm&quot; (ngSubmit)&#x3D;&quot;save(f)&quot; class&#x3D;&quot;row g-2&quot;&gt;
+
+          &lt;div class&#x3D;&quot;col-12 col-md&quot;&gt;
+            &lt;input name&#x3D;&quot;title&quot; ngModel required
+                   class&#x3D;&quot;form-control&quot; placeholder&#x3D;&quot;Título&quot;&gt;
+          &lt;/div&gt;
+
+          &lt;div class&#x3D;&quot;col-6 col-md-2&quot;&gt;
+            &lt;input name&#x3D;&quot;goal&quot; ngModel required min&#x3D;&quot;1&quot; type&#x3D;&quot;number&quot;
+                   class&#x3D;&quot;form-control&quot; placeholder&#x3D;&quot;Meta CLP&quot;&gt;
+          &lt;/div&gt;
+
+          &lt;div class&#x3D;&quot;col-12&quot;&gt;
+            &lt;textarea name&#x3D;&quot;description&quot; ngModel required rows&#x3D;&quot;2&quot;
+                      class&#x3D;&quot;form-control&quot; placeholder&#x3D;&quot;Descripción&quot;&gt;&lt;/textarea&gt;
+          &lt;/div&gt;
+
+          &lt;div class&#x3D;&quot;col-12 text-end&quot;&gt;
+            &lt;button class&#x3D;&quot;btn btn-primary&quot;
+                    type&#x3D;&quot;submit&quot;
+                    [disabled]&#x3D;&quot;f.invalid || loading&quot;&gt;
+              {{ loading ? &#x27;Guardando…&#x27; : &#x27;Crear campaña&#x27; }}
+            &lt;/button&gt;
+          &lt;/div&gt;
+        &lt;/form&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Mensaje vacío --&gt;
+    &lt;p class&#x3D;&quot;text-muted&quot; *ngIf&#x3D;&quot;!(campaigns$ | async)?.length&quot;&gt;
+      Aún no hay campañas registradas.
+    &lt;/p&gt;
+
+    &lt;!-- Tarjetas dinámicas --&gt;
+    &lt;div class&#x3D;&quot;row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4&quot;
+         *ngIf&#x3D;&quot;campaigns$ | async as campaigns&quot;&gt;
+      &lt;div class&#x3D;&quot;col&quot; *ngFor&#x3D;&quot;let c of campaigns&quot;&gt;
+        &lt;div class&#x3D;&quot;card h-100 shadow-sm&quot;&gt;
+          &lt;div class&#x3D;&quot;card-body&quot;&gt;
+            &lt;h5 class&#x3D;&quot;card-title mb-1&quot;&gt;{{ c.title }}&lt;/h5&gt;
+            &lt;p class&#x3D;&quot;card-text small mb-2&quot;&gt;
+              Meta: {{ c.goal | currency:&#x27;CLP&#x27;:&#x27;symbol&#x27;:&#x27;1.0-0&#x27; }}
+            &lt;/p&gt;
+
+            &lt;div class&#x3D;&quot;progress mb-3&quot; style&#x3D;&quot;height:.65rem&quot;&gt;
+              &lt;div class&#x3D;&quot;progress-bar&quot;
+                   role&#x3D;&quot;progressbar&quot;
+                   [style.width.%]&#x3D;&quot;percent(c)&quot;
+                   [ngClass]&#x3D;&quot;barClass(c)&quot;&gt;
+                {{ percent(c) }}%
+              &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;!-- enlace Donar para todos --&gt;
+            &lt;a class&#x3D;&quot;btn btn-outline-success btn-sm me-1&quot;
+               [routerLink]&#x3D;&quot;[&#x27;/donar&#x27;]&quot;
+               [queryParams]&#x3D;&quot;{ id: c.id }&quot;&gt;
+              Donar
+            &lt;/a&gt;
+
+            &lt;!-- 🗑 solo admin --&gt;
+            &lt;button class&#x3D;&quot;btn btn-outline-danger btn-sm&quot;
+                    *ngIf&#x3D;&quot;(auth.role$ | async) &#x3D;&#x3D;&#x3D; &#x27;admin&#x27;&quot;
+                    (click)&#x3D;&quot;delete(c.id!)&quot;&gt;
+              🗑
+            &lt;/button&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/main&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./campaigns.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss"></code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><main class="flex-grow-1 pt-5">  <div class="container my-4">    <h2 class="mb-4">Campañas activas</h2>    <!-- 🔐 Formulario SOLO para admin -->    <div class="card mb-4"         *ngIf="(auth.role$ | async) === \'admin\'">      <div class="card-body">        <form #f="ngForm" (ngSubmit)="save(f)" class="row g-2">          <div class="col-12 col-md">            <input name="title" ngModel required                   class="form-control" placeholder="Título">          </div>          <div class="col-6 col-md-2">            <input name="goal" ngModel required min="1" type="number"                   class="form-control" placeholder="Meta CLP">          </div>          <div class="col-12">            <textarea name="description" ngModel required rows="2"                      class="form-control" placeholder="Descripción"></textarea>          </div>          <div class="col-12 text-end">            <button class="btn btn-primary"                    type="submit"                    [disabled]="f.invalid || loading">              {{ loading ? \'Guardando…\' : \'Crear campaña\' }}            </button>          </div>        </form>      </div>    </div>    <!-- Mensaje vacío -->    <p class="text-muted" *ngIf="!(campaigns$ | async)?.length">      Aún no hay campañas registradas.    </p>    <!-- Tarjetas dinámicas -->    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4"         *ngIf="campaigns$ | async as campaigns">      <div class="col" *ngFor="let c of campaigns">        <div class="card h-100 shadow-sm">          <div class="card-body">            <h5 class="card-title mb-1">{{ c.title }}</h5>            <p class="card-text small mb-2">              Meta: {{ c.goal | currency:\'CLP\':\'symbol\':\'1.0-0\' }}            </p>            <div class="progress mb-3" style="height:.65rem">              <div class="progress-bar"                   role="progressbar"                   [style.width.%]="percent(c)"                   [ngClass]="barClass(c)">                {{ percent(c) }}%              </div>            </div>            <!-- enlace Donar para todos -->            <a class="btn btn-outline-success btn-sm me-1"               [routerLink]="[\'/donar\']"               [queryParams]="{ id: c.id }">              Donar            </a>            <!-- 🗑 solo admin -->            <button class="btn btn-outline-danger btn-sm"                    *ngIf="(auth.role$ | async) === \'admin\'"                    (click)="delete(c.id!)">              🗑            </button>          </div>        </div>      </div>    </div>  </div></main></div>'
+    var COMPONENTS = [{'name': 'AlertComponent', 'selector': 'app-alert'},{'name': 'AnimalsComponent', 'selector': 'app-animals'},{'name': 'App', 'selector': 'app-root'},{'name': 'CampaignsComponent', 'selector': 'app-campaigns'},{'name': 'DonateComponent', 'selector': 'app-donate'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'ForgotPasswordComponent', 'selector': 'app-forgot-password'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MyDonationsComponent', 'selector': 'app-my-donations'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'ProfileComponent', 'selector': 'app-profile'},{'name': 'RegisterComponent', 'selector': 'app-register'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'CampaignsComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'CampaignsComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

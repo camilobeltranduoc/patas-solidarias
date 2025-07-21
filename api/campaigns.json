@@ -13,17 +13,18 @@
       "raised": 210000
     },
     {
-      "id": "ba23",
-      "title": "prueba",
-      "goal": 10000,
-      "description": "prueba"
+      "id": "3",
+      "title": "prueba campaña",
+      "goal": 100000,
+      "description": "esta es una prueba para la campaña",
+      "raised": 46000
     },
     {
-      "id": "5315",
-      "title": "ayuda 1",
-      "goal": 10000,
-      "description": "ayuda1",
-      "raised": 8500
+      "id": "4",
+      "title": "Ayudemos a perlita",
+      "goal": 500000,
+      "description": "perrita en problemas",
+      "raised": 250000
     }
   ]
 }

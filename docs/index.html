@@ -1,0 +1,278 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>patas-solidarias documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
+	   <link rel="stylesheet" href="./styles/style.css">
+        <link rel="stylesheet" href="./styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="./" class="navbar-brand">patas-solidarias documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content getting-started">
+                   <div class="content-data">
+
+<h1>🐾 Patas Solidarias – Front‑End + Mock API</h1>
+<p>Aplicación SPA Angular que permite gestionar campañas de ayuda para animales y recibir donaciones.<br>Los datos de las campañas se sirven desde un <strong>JSON Server</strong> local, mientras que las donaciones y usuarios se guardan en <strong>Firebase (Auth + Firestore)</strong>.</p>
+<hr>
+<h2>✨ Funcionalidades</h2>
+<table class="table table-bordered compodoc-table">
+<thead>
+<tr>
+<th>Rol</th>
+<th>Vista</th>
+<th>Acciones</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Visitante</td>
+<td>Inicio / Campañas / Donar</td>
+<td>Registro · Login</td>
+</tr>
+<tr>
+<td>Usuario</td>
+<td>Donar</td>
+<td>Realizar donación<br>Ver <strong>Mis donaciones</strong></td>
+</tr>
+<tr>
+<td>Admin</td>
+<td>Campañas (panel)</td>
+<td>Crear / editar / eliminar campaña</td>
+</tr>
+</tbody>
+</table>
+<p>Otras características:</p>
+<ul>
+<li><strong>Validación fuerte de contraseñas</strong> (mín. 6 car., mayús, minús, número, especial).  </li>
+<li>Recuperar contraseña por correo.  </li>
+<li>Navegación protegida por <strong>Role Guard</strong>.  </li>
+<li>4 pruebas unitarias (Jasmine + Karma).  </li>
+<li>Docker Compose: <code>ui</code> (Angular + Vite) y <code>api</code> (JSON Server).</li>
+</ul>
+<hr>
+<h2>🛠 Tecnologías</h2>
+<ul>
+<li>Angular 20 (stand‑alone components, Vite builder)  </li>
+<li>Firebase v10 (<code>@angular/fire</code>)  </li>
+<li>JSON Server 0.18  </li>
+<li>Bootstrap 5 + SCSS  </li>
+<li>Docker 24 / Compose v2  </li>
+<li>Jasmine &amp; Karma</li>
+</ul>
+<hr>
+<h2>⚡ Rápido inicio</h2>
+<h3>1. Clonar e instalar</h3>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-bash">git clone https://github.com/&lt;TU‑USUARIO&gt;/patas-solidarias.git
+cd patas-solidarias
+npm install</code></pre></div><h3>2. Variables de entorno Firebase</h3>
+<blockquote>
+<p><strong>Por seguridad</strong> el archivo no está en el repo.</p>
+</blockquote>
+<ol>
+<li>Crea <code>src/environments/environment.ts</code>:</li>
+</ol>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-ts">export const environment = {
+  production: false,
+  apiUrl: &#39;http://localhost:3000&#39;,
+  firebase: {
+    apiKey: &#39;…&#39;,
+    authDomain: &#39;…&#39;,
+    projectId: &#39;…&#39;,
+    storageBucket: &#39;…&#39;,
+    messagingSenderId: &#39;…&#39;,
+    appId: &#39;…&#39;
+  }
+};</code></pre></div><ol start="2">
+<li>Repite con <code>environment.prod.ts</code> si necesitas config separada de producción.</li>
+</ol>
+<h3>3. Modo desarrollador (Angular + API)</h3>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-bash">npm run dev          # = concurrently &quot;ng serve&quot; &quot;json-server …&quot;</code></pre></div><ul>
+<li>UI 👉 <a href="http://localhost:4200">http://localhost:4200</a>  </li>
+<li>API 👉 <a href="http://localhost:3000/campaigns">http://localhost:3000/campaigns</a></li>
+</ul>
+<hr>
+<h2>🧪 Tests</h2>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-bash">npm run test</code></pre></div><p>Ejecución de Jasmine + Karma (watch).</p>
+<hr>
+<h2>🐳 Docker</h2>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-bash">docker compose up --build
+# ui  : http://localhost:8080
+# api : http://localhost:3000/campaigns</code></pre></div><p>Archivos relevantes:</p>
+<ul>
+<li><code>Dockerfile</code> – build Angular → Nginx  </li>
+<li><code>docker-compose.yml</code> – define <code>ui</code> + <code>api</code>  </li>
+<li><code>.dockerignore</code></li>
+</ul>
+<hr>
+<h2>📂 Estructura (resumen)</h2>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-none">src/
+├ app/ (core, pages, shared)
+├ environments/
+api/campaigns.json
+Dockerfile
+docker-compose.yml</code></pre></div><hr>
+<h2>📜 Licencia</h2>
+<p>MIT © 2025 Patas Solidarias Team</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 0;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'getting-started';
+            var COMPODOC_CURRENT_PAGE_URL = 'index.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="./js/libs/custom-elements.min.js"></script>
+       <script src="./js/libs/lit-html.js"></script>
+
+       <script src="./js/menu-wc.js" defer></script>
+       <script nomodule src="./js/menu-wc_es5.js" defer></script>
+
+       <script src="./js/libs/bootstrap-native.js"></script>
+
+       <script src="./js/libs/es6-shim.min.js"></script>
+       <script src="./js/libs/EventDispatcher.js"></script>
+       <script src="./js/libs/promise.min.js"></script>
+
+       <script src="./js/compodoc.js"></script>
+
+       <script src="./js/tabs.js"></script>
+       <script src="./js/menu.js"></script>
+       <script src="./js/libs/clipboard.min.js"></script>
+       <script src="./js/libs/prism.js"></script>
+       <script src="./js/sourceCode.js"></script>
+          <script src="./js/search/search.js"></script>
+          <script src="./js/search/lunr.min.js"></script>
+          <script src="./js/search/search-lunr.js"></script>
+          <script src="./js/search/search_index.js"></script>
+       <script src="./js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
